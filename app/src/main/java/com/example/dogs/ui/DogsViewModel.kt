@@ -7,10 +7,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dogs.di.AppModule
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DogsViewModel : ViewModel() {
+@HiltViewModel
+class DogsViewModel @Inject constructor() : ViewModel() {
     private val _dogImages = MutableStateFlow<List<String>>(emptyList())
     val dogImages = _dogImages
     private val repository = AppModule.providesRepository(AppModule.providesApiClient())

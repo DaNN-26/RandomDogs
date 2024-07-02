@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
     kotlin("plugin.serialization") version "1.9.0"
 }
 
@@ -53,6 +55,7 @@ android {
 val ktor_version: String by project
 val serialization = "1.6.3"
 val coil = "2.6.0"
+val hilt = "2.51.1"
 
 dependencies {
 
@@ -81,6 +84,10 @@ dependencies {
     implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
 
-    // coil
+    // Coil
     implementation("io.coil-kt:coil-compose:$coil")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:$hilt")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt")
 }
